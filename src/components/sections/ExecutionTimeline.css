@@ -1,0 +1,369 @@
+/* ============================================================
+   EXECUTION MODEL — alternating flow timeline
+   ============================================================ */
+
+.execution {
+  position: relative;
+  overflow: hidden;
+}
+
+.execution__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.execution__glow--a {
+  top: -120px;
+  left: -140px;
+  width: 420px;
+  height: 420px;
+  background: rgba(var(--accent-rgb), 0.16);
+}
+
+.execution__glow--b {
+  bottom: -140px;
+  right: -120px;
+  width: 460px;
+  height: 460px;
+  background: rgba(0, 177, 165, 0.10);
+}
+
+.execution > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   FLOW CONTAINER + SPINE
+   ============================================================ */
+
+.exec-flow {
+  position: relative;
+  margin-top: 4rem;
+}
+
+.exec-flow__line {
+  position: absolute;
+  top: 0;
+  bottom: 64px;
+  left: 28px;
+  width: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.exec-flow__line-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: top center;
+  background: linear-gradient(180deg, var(--accent), rgba(var(--accent-rgb), 0.25));
+}
+
+.exec-flow__end {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4px;
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.exec-finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 260px;
+}
+
+.exec-finish__ring {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, var(--accent), var(--accent-dark));
+  color: var(--white);
+  box-shadow: 0 14px 34px rgba(var(--accent-rgb), 0.5);
+}
+
+.exec-finish__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: exec-finish-pulse 2.6s ease-out infinite;
+}
+
+.exec-finish__pulse--delay {
+  animation-delay: 1.3s;
+}
+
+@keyframes exec-finish-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.exec-finish__label {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.exec-finish__sub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exec-finish__pulse {
+    animation: none;
+    display: none;
+  }
+}
+
+/* ============================================================
+   STEP (mobile-first: single column, spine on the left)
+   ============================================================ */
+
+.exec-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 2.25rem;
+}
+
+.exec-step:last-child {
+  margin-bottom: 1.5rem;
+}
+
+.exec-step__dot {
+  grid-column: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: var(--white);
+  box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.12), 0 8px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.exec-step:hover .exec-step__dot {
+  transform: scale(1.12);
+  background: var(--accent);
+  box-shadow: 0 0 0 8px rgba(var(--accent-rgb), 0.2), 0 10px 26px rgba(var(--accent-rgb), 0.55);
+}
+
+.exec-step__card {
+  grid-column: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem 1.4rem;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background 0.35s ease;
+}
+
+.exec-step:hover .exec-step__card {
+  transform: translateY(-4px);
+  border-color: rgba(var(--accent-rgb), 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(var(--accent-rgb), 0.12);
+  background: linear-gradient(160deg, rgba(var(--accent-rgb), 0.10) 0%, rgba(255, 255, 255, 0.015) 100%);
+}
+
+.exec-step__ghost-num {
+  position: absolute;
+  top: 0.6rem;
+  right: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exec-step__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(var(--accent-rgb), 0.22), rgba(var(--accent-rgb), 0.06));
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+}
+
+.exec-step__eyebrow {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.exec-step__title {
+  position: relative;
+  z-index: 1;
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--white);
+  margin-bottom: 0.55rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.exec-step__desc {
+  position: relative;
+  z-index: 1;
+  font-size: 0.87rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* ============================================================
+   DESKTOP — zig-zag around a centered spine
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .exec-flow {
+    margin-top: 4.5rem;
+  }
+
+  .exec-flow__line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .exec-flow__end {
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .exec-step {
+    grid-template-columns: 1fr 64px 1fr;
+    column-gap: 2.5rem;
+    margin-bottom: 3.25rem;
+  }
+
+  .exec-step__dot {
+    grid-column: 2;
+    justify-self: center;
+    margin-top: 0.25rem;
+  }
+
+  .exec-step__card {
+    max-width: 420px;
+    padding: 1.85rem 1.85rem 1.6rem;
+  }
+
+  .exec-step--left .exec-step__card {
+    grid-column: 1;
+    justify-self: end;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .exec-step--right .exec-step__card {
+    grid-column: 3;
+    justify-self: start;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .exec-step--left .exec-step__ghost-num {
+    left: 1.1rem;
+    right: auto;
+  }
+
+  .exec-step--left .exec-step__icon,
+  .exec-step--left .exec-step__eyebrow {
+    align-self: flex-end;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — small screens
+   ============================================================ */
+
+@media (max-width: 500px) {
+  .exec-flow__line {
+    left: 22px;
+    bottom: 52px;
+  }
+
+  .exec-step {
+    grid-template-columns: 44px 1fr;
+    column-gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .exec-step__dot {
+    width: 44px;
+    height: 44px;
+    font-size: 0.75rem;
+  }
+
+  .exec-step__card {
+    padding: 1.25rem 1.25rem 1.1rem;
+  }
+
+  .exec-step__title {
+    font-size: 0.95rem;
+  }
+
+  .exec-step__desc {
+    font-size: 0.82rem;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .exec-step__dot,
+  .exec-step__card {
+    transition: none;
+  }
+}

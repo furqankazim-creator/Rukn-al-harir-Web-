@@ -1,0 +1,1 @@
+Also set the background image according to the given comany profil suitable image and also set the bullet points work more improvement

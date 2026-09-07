@@ -1,0 +1,116 @@
+.gallery-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 220px);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gallery-preview__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+  cursor: pointer;
+}
+
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(2) { grid-column: span 3; grid-row: span 1; }
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(3) { grid-column: span 3; grid-row: span 1; }
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(6) { grid-column: span 2; grid-row: span 1; }
+
+/* ---- Uniform grid (all images) — masonry column flow, no trailing gaps ---- */
+.gallery-preview__grid--uniform {
+  display: block;
+  columns: 3;
+  column-gap: 1rem;
+}
+
+.gallery-preview__grid--uniform .gallery-preview__item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-preview__grid--uniform .gallery-preview__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-preview__item img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-preview__item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-preview__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 23, 69, 0) 55%, rgba(18, 23, 69, 0.82) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-preview__item:hover .gallery-preview__overlay {
+  opacity: 1;
+}
+
+.gallery-preview__category {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  padding: 0.32rem 0.75rem;
+  border-radius: 3px;
+}
+
+.gallery-preview__cta {
+  margin-top: 3rem;
+}
+
+@media (max-width: 900px) {
+  .gallery-preview__grid:not(.gallery-preview__grid--uniform) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    grid-auto-rows: 220px;
+  }
+  .gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(n) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .gallery-preview__grid--uniform {
+    columns: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery-preview__grid:not(.gallery-preview__grid--uniform) {
+    grid-template-columns: 1fr;
+  }
+  .gallery-preview__grid:not(.gallery-preview__grid--uniform) .gallery-preview__item:nth-child(1) {
+    grid-column: span 1;
+  }
+  .gallery-preview__grid--uniform {
+    columns: 1;
+  }
+}

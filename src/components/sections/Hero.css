@@ -1,0 +1,360 @@
+﻿/* ============================================================
+   NEO-BRUTALIST HERO SECTION
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+/* Full-bleed background overlay */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-mid) 100%);
+}
+
+.hero__bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  will-change: transform;
+}
+
+/* 3D accent layer — right half of the hero, behind the text */
+.hero__3d {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero__3d { display: none; }
+}
+
+/* Content wrapper */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  padding: 4rem 2rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Text block - left side */
+.hero__text {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Main headline */
+.hero__title {
+  color: var(--white);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Accent color in title */
+.hero__title em {
+  color: var(--accent);
+  font-style: normal;
+  display: block;
+}
+
+/* Subtitle - description */
+.hero__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.8;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Badge - rotated sticker style */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border: 3px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 24px;
+  box-shadow: var(--shadow-offset-sm);
+  transform: rotate(-3deg);
+  width: fit-content;
+}
+
+/* Action buttons */
+.hero__actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.hero__actions .btn {
+  flex-shrink: 0;
+}
+
+/* Photo frame - right side */
+.hero__photo-frame {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45%;
+  max-width: 600px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__photo-circle {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 4px solid var(--black);
+  background: var(--accent);
+  box-shadow: var(--shadow-offset-lg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__photo-circle img,
+.hero__photo-circle video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__photo-diagonal {
+  display: none;
+}
+
+/* ============================================================
+   PAGE HERO (Inner pages)
+   ============================================================ */
+.page-hero {
+  position: relative;
+  background: var(--navy);
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+  border-bottom: 4px solid var(--accent);
+}
+
+.page-hero__geo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15) 0%, transparent 100%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.page-hero__geo-accent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 35%;
+  height: 50%;
+  background: var(--accent);
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+  opacity: 0.15;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Image-only variant: full-bleed banner sitting flush under the navbar */
+.page-hero--with-image {
+  background: transparent;
+  border-bottom: none;
+  padding: 0;
+}
+
+/* Break out of the container so the image spans edge-to-edge */
+.page-hero--with-image .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.page-hero__media {
+  overflow: hidden;
+  border-bottom: 4px solid var(--accent);
+}
+
+/* Full-width, full image — no cropping so the graphic's text is never cut */
+.page-hero__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Accessible-but-hidden heading */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.page-hero__title {
+  color: var(--white);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.page-hero__sub {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero__photo-frame {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__text {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .hero__badge {
+    transform: rotate(0deg);
+  }
+
+  .hero__photo-frame {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 3rem;
+  }
+
+  .hero__photo-circle {
+    width: 100%;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero__text {
+    gap: 1.5rem;
+  }
+
+  .hero__title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__photo-frame {
+    max-width: 280px;
+    margin-top: 2rem;
+  }
+}

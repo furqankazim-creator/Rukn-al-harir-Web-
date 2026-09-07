@@ -1,0 +1,143 @@
+/* ============================================================
+   INTRO PRELOADER — animated construction crane
+   ============================================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 120% at 50% 30%, #1c1a42 0%, var(--navy-dark, #0E0C2B) 55%, #0a0920 100%);
+}
+
+.loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ---- Crane ---- */
+.crane {
+  overflow: visible;
+}
+
+.crane__stroke,
+.crane__ground,
+.crane__cable,
+.crane__accent-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.crane__stroke {
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.crane__ground {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 3;
+  stroke-dasharray: 4 8;
+}
+
+.crane__cable {
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 2;
+}
+
+.crane__accent-stroke {
+  stroke: var(--accent, #ED2B2A);
+  stroke-width: 3;
+}
+
+.crane__accent-fill {
+  fill: var(--accent, #ED2B2A);
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+/* Rotating top rocks gently around the mast tip */
+.crane__jib {
+  transform-origin: 100px 46px;
+  animation: crane-swing 3.4s ease-in-out infinite;
+}
+
+/* The hook + load bob up and down */
+.crane__load {
+  transform-origin: 150px 46px;
+  animation: crane-lift 2.2s ease-in-out infinite;
+}
+
+@keyframes crane-swing {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+@keyframes crane-lift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(26px); }
+}
+
+/* ---- Brand ---- */
+.loader__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.loader__brand-main {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+}
+
+.loader__brand-sub {
+  font-family: var(--font-heading, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent, #ED2B2A);
+}
+
+/* ---- Progress bar ---- */
+.loader__bar {
+  position: relative;
+  width: 180px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.loader__bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent, #ED2B2A), var(--accent-dark, #C41E1D));
+  animation: loader-bar 1.3s ease-in-out infinite;
+}
+
+@keyframes loader-bar {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+
+/* Reduced motion — hold everything still */
+@media (prefers-reduced-motion: reduce) {
+  .crane__jib,
+  .crane__load,
+  .loader__bar-fill {
+    animation: none;
+  }
+  .loader__bar-fill { width: 100%; }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="30" fill="#12123B" stroke="#B71C1C" stroke-width="2.5"/>
+  <!-- Gear teeth -->
+  <g fill="#FFFFFF">
+    <rect x="29" y="4" width="6" height="8" rx="1"/>
+    <rect x="29" y="52" width="6" height="8" rx="1"/>
+    <rect x="4" y="29" width="8" height="6" rx="1"/>
+    <rect x="52" y="29" width="8" height="6" rx="1"/>
+    <rect x="12" y="12" width="6" height="6" rx="1" transform="rotate(45 15 15)"/>
+    <rect x="46" y="12" width="6" height="6" rx="1" transform="rotate(45 49 15)"/>
+    <rect x="12" y="46" width="6" height="6" rx="1" transform="rotate(45 15 49)"/>
+    <rect x="46" y="46" width="6" height="6" rx="1" transform="rotate(45 49 49)"/>
+  </g>
+  <!-- Gear body -->
+  <circle cx="32" cy="32" r="12" fill="#B71C1C"/>
+  <circle cx="32" cy="32" r="5" fill="#12123B"/>
+  <!-- Wrench -->
+  <rect x="33" y="28" width="4" height="18" rx="2" fill="#FFFFFF" transform="rotate(-45 35 37)"/>
+  <circle cx="38" cy="23" r="4" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+</svg>

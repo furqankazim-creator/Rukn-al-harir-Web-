@@ -1,0 +1,154 @@
+/* ============================================================
+   WORK CTA — bold accent break between the timeline and Why Choose Us
+   ============================================================ */
+
+.work-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 55%, var(--crimson-light) 100%);
+  padding: 5.5rem 0;
+}
+
+.work-cta__shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.work-cta__shape--a {
+  top: -20%;
+  right: -6%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.work-cta__shape--b {
+  bottom: -30%;
+  left: -8%;
+  width: 320px;
+  height: 320px;
+  background: rgba(18, 23, 69, 0.18);
+  clip-path: polygon(0 0, 100% 30%, 70% 100%, 0 100%);
+}
+
+.work-cta__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.work-cta__label {
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-color: var(--white) !important;
+}
+
+.work-cta__title {
+  color: var(--white);
+  font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0.75rem 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.work-cta__sub {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.work-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+
+.work-cta__outline {
+  border-color: var(--white) !important;
+  color: var(--white) !important;
+}
+
+.work-cta__outline:hover,
+.work-cta__outline:focus {
+  background: var(--white) !important;
+  color: var(--accent) !important;
+}
+
+/* Highlight list */
+.work-cta__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-cta__highlight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.35rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease;
+}
+
+.work-cta__highlight:hover {
+  transform: translateX(-4px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--white);
+}
+
+.work-cta__highlight-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--accent);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .work-cta {
+    padding: 4rem 0;
+  }
+
+  .work-cta__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .work-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .work-cta__actions .btn {
+    width: 100%;
+  }
+
+  .work-cta__highlight {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+  }
+}

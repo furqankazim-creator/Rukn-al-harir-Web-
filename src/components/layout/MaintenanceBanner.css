@@ -1,0 +1,25 @@
+.maintenance-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1002;
+  background: var(--accent);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  letter-spacing: 0.01em;
+}
+
+/* Shift the fixed navbar (and the page content below it) down to make
+   room for the banner sitting above it. */
+html.has-maintenance-banner .navbar {
+  top: 34px;
+}
+
+html.has-maintenance-banner main#main-content {
+  margin-top: 34px;
+}
