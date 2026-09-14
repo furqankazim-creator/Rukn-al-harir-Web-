@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import './Navbar.css'
 
@@ -22,9 +22,10 @@ export default function Navbar() {
   }, [])
 
   // Close menu on route change
+  const location = useLocation()
   useEffect(() => {
     setMenuOpen(false)
-  })
+  }, [location.pathname])
 
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`} role="banner">

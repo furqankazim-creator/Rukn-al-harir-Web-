@@ -18,7 +18,16 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  /* match .container width and center content so navbar aligns on all pages */
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(2rem + env(safe-area-inset-right, 0px));
 }
+
+/* allow absolute positioning of hamburger on small screens */
+.navbar__inner { position: relative; }
 
 /* Nav links */
 .navbar__nav {
@@ -136,6 +145,32 @@
 
 @media (max-width: 900px) {
   .navbar__hamburger { display: flex; }
+
+  /* standardize navbar height on small screens */
+  .navbar { padding: 0.75rem 0; }
+
+  /* center hamburger vertically and increase touch target */
+  .navbar__hamburger {
+    position: absolute;
+    top: 50%;
+    right: calc(2rem + env(safe-area-inset-right, 0px));
+    transform: translateY(-50%);
+    padding: 8px;
+    margin-left: 0;
+    z-index: 1002;
+  }
+
+  .navbar__hamburger span {
+    width: 28px;
+    height: 3px;
+  }
+
+  /* ensure logo and inner spacing match Contact page layout */
+  .navbar__inner {
+    align-items: center;
+    padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+    padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+  }
 
   .navbar__nav {
     position: fixed;

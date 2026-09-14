@@ -14,6 +14,36 @@ export default function Layout() {
   const { pathname } = useLocation()
   const lenis = useLenis()
 
+  // Ensure main content is offset by the actual navbar height (handles mobile/padded states)
+  useEffect(() => {
+    const el = document.querySelector('.navbar')
+    if (!el) return
+
+    const setVar = () => {
+      const h = el.getBoundingClientRect().height
+      document.documentElement.style.setProperty('--navbar-height', `${Math.ceil(h)}px`)
+    }
+
+    setVar()
+
+    let ro
+    if (window.ResizeObserver) {
+      ro = new ResizeObserver(setVar)
+      ro.observe(el)
+    } else {
+      window.addEventListener('resize', setVar)
+      window.addEventListener('orientationchange', setVar)
+    }
+
+    return () => {
+      if (ro) ro.disconnect()
+      else {
+        window.removeEventListener('resize', setVar)
+        window.removeEventListener('orientationchange', setVar)
+      }
+    }
+  }, [pathname])
+
   // Scroll to top on route change (Lenis-aware; falls back to native)
   useEffect(() => {
     if (lenis) {
@@ -33,7 +63,7 @@ export default function Layout() {
       <CustomCursor />
       <MaintenanceBanner />
       <Navbar />
-      <main id="main-content" style={{ paddingTop: '76px' }}>
+      <main id="main-content" style={{ paddingTop: 'var(--navbar-height, 76px)' }}>
         <Outlet />
       </main>
       <Footer />
