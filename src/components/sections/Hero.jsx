@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import './Hero.css'
 import { durations, easings, variants } from '../../utils/animationConfig'
 import Magnetic from '../ui/Magnetic'
@@ -20,6 +21,20 @@ export default function Hero({
 
   videoAlt = 'Construction site with engineers and workers',
 }) {
+  // The background video is ~9.5MB — skip it on narrow screens (mobile
+  // data) and for reduced-motion users, and just show the poster instead.
+  const reduceMotion = useReducedMotion()
+  const [canPlayVideo, setCanPlayVideo] = useState(false)
+
+  useEffect(() => {
+    if (reduceMotion) return
+    const mq = window.matchMedia('(min-width: 769px)')
+    setCanPlayVideo(mq.matches)
+    const onChange = (e) => setCanPlayVideo(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [reduceMotion])
+
   // Split title into lines for staggered animation
   const titleLines = title.split('\n').length > 1 
     ? title.split('\n') 
@@ -74,18 +89,24 @@ export default function Hero({
 
   return (
     <section className="hero">
-      {/* Full-bleed background video */}
+      {/* Full-bleed background video (desktop only — skipped on mobile
+          and for reduced-motion to avoid loading ~9.5MB on every visit) */}
       <div className="hero__bg" aria-hidden="true">
-        <video
-          className="hero__bg-video"
-          src={bgVideoSrc}
-          poster={bgPosterSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        {canPlayVideo ? (
+          <video
+            className="hero__bg-video"
+            src={bgVideoSrc}
+            poster={bgPosterSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <img className="hero__bg-poster" src={bgPosterSrc} alt="" />
+        )}
       </div>
+      <div className="hero__scrim" aria-hidden="true" />
 
       <div className="container hero__content">
         <motion.div 
