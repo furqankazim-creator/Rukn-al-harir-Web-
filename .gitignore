@@ -26,3 +26,7 @@ dist-ssr
 # Local env (keep .env.example committed)
 .env
 .env.local
+
+# Backend — this repo is frontend-only; the API lives/deploys separately
+server/
+docker-compose.yml
