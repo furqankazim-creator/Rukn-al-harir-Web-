@@ -1,7 +1,0 @@
-node_modules
-data
-uploads/gallery/*
-!uploads/gallery/.gitkeep
-.env
-npm-debug.log
-*.log
