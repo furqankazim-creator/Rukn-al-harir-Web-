@@ -33,13 +33,17 @@ export default function Footer() {
               <Logo variant="light" size="md" />
               <p className="footer__tagline">{tagline}</p>
               <div className="footer__social" aria-label="Social media links">
-                {/* Social placeholders */}
-                {['LinkedIn', 'Instagram', 'Facebook'].map((name) => (
+                {[
+                  { name: 'LinkedIn', href: 'https://ae.linkedin.com/company/rukn-al-harir-technical-services' },
+                  { name: 'Instagram', href: '#' },
+                  { name: 'Facebook', href: '#' },
+                ].map(({ name, href }) => (
                   <a
                     key={name}
-                    href="#"
+                    href={href}
                     className="footer__social-link"
                     aria-label={name}
+                    target={href !== '#' ? '_blank' : undefined}
                     rel="noopener noreferrer"
                   >
                     <SocialIcon name={name} />

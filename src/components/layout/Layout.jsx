@@ -67,7 +67,9 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <WhatsAppButton />
+      {/* Contact page already has its own WhatsApp CTA — the floating button
+          would sit right on top of the phone number on narrow screens */}
+      {pathname !== '/contact' && <WhatsAppButton />}
     </>
   )
 }
