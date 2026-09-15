@@ -30,3 +30,16 @@ dist-ssr
 # Backend — this repo is frontend-only; the API lives/deploys separately
 server/
 docker-compose.yml
+
+# Sandbox/environment cruft that shouldn't be part of the project
+.npm-cache/
+.npm-cache-server/
+.bashrc
+.zshrc
+.bash_profile
+.zprofile
+.profile
+.gitconfig
+.gitmodules
+.mcp.json
+.ripgreprc
