@@ -1,4 +1,4 @@
-﻿/* About Snapshot */
+/* About Snapshot */
 .about-snap__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12,6 +12,7 @@
 .photo-block {
   position: relative;
   padding-bottom: 3rem;
+  overflow: hidden;
 }
 
 .photo-block__diagonal {
@@ -52,14 +53,14 @@
 
 .photo-block__prop--tape {
   top: -2%;
-  right: -6%;
+  right: 0;
   width: clamp(90px, 12vw, 140px);
   height: auto;
 }
 
 .photo-block__prop--helmet {
   bottom: 8%;
-  left: -8%;
+  left: 0;
   width: clamp(100px, 14vw, 160px);
   height: auto;
 }
@@ -69,7 +70,7 @@
   .photo-block__prop--helmet { width: clamp(80px, 11vw, 120px); }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
   .photo-block__prop { display: none; }
 }
 

@@ -1,4 +1,4 @@
-﻿/* About body layout */
+/* About body layout */
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -417,4 +417,14 @@
 
 @media (max-width: 600px) {
   .team-tiles { grid-template-columns: 1fr 1fr; }
+  .about-photo-frame,
+  .cap-photo-frame {
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .about-photo-frame__ring,
+  .cap-photo-frame__ring {
+    display: none;
+  }
 }

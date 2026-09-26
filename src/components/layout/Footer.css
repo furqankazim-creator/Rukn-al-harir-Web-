@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    NEO-BRUTALIST FOOTER
    ============================================================ */
 
@@ -37,7 +37,7 @@
 .footer__watermark {
   position: absolute;
   bottom: 3.5rem;
-  right: -1rem;
+  right: 0;
   font-family: var(--font-heading);
   font-size: clamp(3rem, 11vw, 10rem);
   font-weight: 900;
@@ -48,6 +48,14 @@
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .footer__watermark {
+    display: none;
+  }
 }
 
 /* Main content */

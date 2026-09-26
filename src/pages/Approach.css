@@ -1,4 +1,4 @@
-﻿.approach-intro {
+.approach-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
@@ -153,4 +153,18 @@
 @media (max-width: 900px) {
   .approach-intro { grid-template-columns: 1fr; gap: 2.5rem; }
   .approach-values { padding: 2.5rem 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .approach-photo-frame {
+    padding-left: 0;
+    padding-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .approach-photo-frame__ring {
+    display: none;
+  }
+  .approach-values__closing {
+    padding-left: 1rem;
+  }
 }

@@ -138,6 +138,10 @@
 }
 
 @media (max-width: 560px) {
+  .work-cta__shape {
+    display: none;
+  }
+
   .work-cta__actions {
     flex-direction: column;
     align-items: stretch;

@@ -175,20 +175,26 @@
   .navbar__nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: min(320px, 85vw);
     height: 100vh;
+    height: 100dvh;
     background: var(--navy);
     flex-direction: column;
     justify-content: flex-start;
-    padding: 5rem 2rem 2rem;
-    transition: right 0.3s ease;
+    padding: 5rem 1.75rem 2.5rem;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
     z-index: 1001;
     box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .navbar__nav--open {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
   }
 
   .navbar__links {
