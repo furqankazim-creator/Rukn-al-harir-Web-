@@ -105,8 +105,6 @@ export default function Contact() {
             animate={{ opacity: 1 }}
             transition={{ duration: durations.medium }}
           >
-            {/* Form (temporarily disabled) */}
-            {false && (
             <motion.div
               className="contact__form-wrap reveal-left"
               initial={{ opacity: 0, x: -40 }}
@@ -356,11 +354,10 @@ export default function Contact() {
                 </motion.div>
               </motion.form>
             </motion.div>
-            )}
 
             {/* Contact details */}
             <motion.div
-              className="contact__info reveal-right contact__info--centered"
+              className="contact__info reveal-right"
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, threshold: 0.5 }}
