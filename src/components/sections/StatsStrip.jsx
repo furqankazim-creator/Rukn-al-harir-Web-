@@ -1,13 +1,16 @@
 /**
  * StatsStrip — credibility numbers that count up on first viewport entry.
  * Uses the existing useCountUp hook. Respects reduced motion (snaps to the
- * final value). Displays target values by default for SEO crawlers.
+ * final value). Brutalist styling: thick borders, hard shadows, big display
+ * numerals with the orange accent.
  */
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useCountUp } from '../../utils/useScrollReveal'
 import { durations, easings } from '../../utils/animationConfig'
 import './StatsStrip.css'
+
+const COUNT_START_DELAY = 1000 // ms to wait after scrolling into view
 
 const stats = [
   { value: 150, suffix: '+', label: 'Projects Supported' },
@@ -18,10 +21,17 @@ const stats = [
 
 function Stat({ value, suffix, label, start }) {
   const reduceMotion = useReducedMotion()
-  const count = useCountUp(value, start && !reduceMotion, 1800)
-  
-  // Show target value for bots/SSR or when reduced motion is preferred
-  const shown = reduceMotion ? value : (start ? count : value)
+
+  // Wait 3s after the strip scrolls into view before counting begins
+  const [delayedStart, setDelayedStart] = useState(false)
+  useEffect(() => {
+    if (!start) { setDelayedStart(false); return }
+    const t = setTimeout(() => setDelayedStart(true), COUNT_START_DELAY)
+    return () => clearTimeout(t)
+  }, [start])
+
+  const count = useCountUp(value, delayedStart && !reduceMotion, 2200)
+  const shown = reduceMotion ? value : count
 
   return (
     <div className="stat">
@@ -36,7 +46,7 @@ function Stat({ value, suffix, label, start }) {
 
 export default function StatsStrip() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.2 })
+  const inView = useInView(ref, { once: false, amount: 0.4 })
 
   const container = {
     hidden: {},

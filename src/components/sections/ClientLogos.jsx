@@ -38,6 +38,28 @@ export default function ClientLogos() {
     },
   }
 
+  const logoVariants = {
+    hidden: { opacity: 0, y: 20, filter: "grayscale(100%)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "grayscale(100%)",
+      transition: {
+        duration: durations.medium,
+        ease: easings.fastOutSlowIn,
+      },
+    },
+    hover: {
+      y: -4,
+      filter: "grayscale(0%)",
+      boxShadow: "8px 8px 0px rgba(0, 0, 0, 1)",
+      transition: {
+        duration: durations.short,
+        ease: easings.fastOutSlowIn,
+      },
+    },
+  }
+
   return (
     <section className="clients section section--light">
       <div className="container">
@@ -52,13 +74,13 @@ export default function ClientLogos() {
             className="section-label"
             variants={itemVariants}
           >
-            Our Clients &amp; Partners
+            Our Clients
           </motion.span>
           <motion.h2 
             className="section-title"
             variants={itemVariants}
           >
-            Trusted by Leading Industry Names
+            Trusted by Leading Names
           </motion.h2>
           <motion.p 
             className="section-subtitle"
@@ -75,12 +97,30 @@ export default function ClientLogos() {
           viewport={{ once: true, threshold: 0.3 }}
           transition={{ duration: durations.medium }}
         >
-          {/* Continuous Marquee Track */}
+          {/* Row 1 — scrolls left */}
           <div className="marquee marquee--left">
             <div className="marquee__track">
               {[...clients, ...clients].map((client, i) => (
                 <div
-                  key={`client-${client.name}-${i}`}
+                  key={`r1-${i}`}
+                  className="client-logo"
+                  title={client.name}
+                  aria-hidden={i >= clients.length}
+                >
+                  <div className="client-logo__inner" aria-label={client.name}>
+                    <img src={client.logo} alt={client.name} loading="lazy" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2 — scrolls right */}
+          <div className="marquee marquee--right">
+            <div className="marquee__track">
+              {[...clients, ...clients].reverse().map((client, i) => (
+                <div
+                  key={`r2-${i}`}
                   className="client-logo"
                   title={client.name}
                   aria-hidden={i >= clients.length}
