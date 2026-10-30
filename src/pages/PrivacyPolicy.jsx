@@ -36,7 +36,7 @@ const policySections = [
   {
     title: 'Contact',
     body:
-      'If you have any questions about this Privacy Policy or how we handle your information, please contact Rukn Al Harir Technical Services at info@ruknalharir.com or +971 50 287 4520.'
+      'If you have any questions about this Privacy Policy or how we handle your information, please contact Rukn Al Harir Technical Services at info@ruknalharir.com or +971 55 835 0447.'
   },
 ]
 

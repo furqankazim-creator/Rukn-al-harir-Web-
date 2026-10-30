@@ -92,9 +92,9 @@ export default function Footer() {
               <h3 className="footer__heading">Contact Us</h3>
               <ul className="footer__contact-list" role="list">
                 <li>
-                  <a href="tel:+971502874520" className="footer__contact-item">
+                  <a href="tel:+971558350447" className="footer__contact-item">
                     <PhoneIcon />
-                    <span>+971 50 287 4520</span>
+                    <span>+971 55 835 0447</span>
                   </a>
                 </li>
                 <li>

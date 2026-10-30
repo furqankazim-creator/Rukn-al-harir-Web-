@@ -41,7 +41,7 @@ const termsSections = [
   {
     title: 'Contact',
     body:
-      'For questions about these Terms & Conditions, please contact Rukn Al Harir Technical Services at info@ruknalharir.com or +971 50 287 4520.'
+      'For questions about these Terms & Conditions, please contact Rukn Al Harir Technical Services at info@ruknalharir.com or +971 55 835 0447.'
   },
 ]
 

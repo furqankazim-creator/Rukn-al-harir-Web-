@@ -108,7 +108,7 @@ export default function ClosingBanner() {
               </Link>
             </motion.div>
             <motion.div variants={buttonVariants}>
-              <a href="tel:+971502874520" className="btn btn-secondary">
+              <a href="tel:+971558350447" className="btn btn-secondary">
                 Call Us Now
               </a>
             </motion.div>

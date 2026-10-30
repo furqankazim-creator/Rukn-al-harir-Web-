@@ -105,9 +105,259 @@ export default function Contact() {
             animate={{ opacity: 1 }}
             transition={{ duration: durations.medium }}
           >
+            <motion.div
+              className="contact__form-wrap reveal-left"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, threshold: 0.5 }}
+              transition={{ duration: durations.standard, ease: easings.fastOutSlowIn }}
+            >
+              <motion.h2 
+                className="contact__form-title"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, threshold: 0.5 }}
+                transition={{ duration: durations.medium, delay: 0.1 }}
+              >
+                Send Us a Message
+              </motion.h2>
+              <motion.p 
+                className="contact__form-sub"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, threshold: 0.5 }}
+                transition={{ duration: durations.medium, delay: 0.15 }}
+              >
+                Fill in the form below and our team will get back to you promptly.
+              </motion.p>
+
+              {status === 'success' && (
+                <motion.div 
+                  className="contact__success" 
+                  role="alert"
+                  initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: durations.short, ease: easings.snapBounce }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                  <div>
+                    <strong>Message sent successfully!</strong>
+                    <p>We will be in touch with you shortly.</p>
+                  </div>
+                </motion.div>
+              )}
+
+              {status === 'error' && (
+                <motion.div 
+                  className="contact__error" 
+                  role="alert"
+                  initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: durations.short, ease: easings.snapBounce }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <div>
+                    <strong>Unable to send via server.</strong>
+                    <p>
+                      Please{' '}
+                      <a href={errors._fallback} className="contact__fallback-link">
+                        click here to email us directly
+                      </a>{' '}
+                      or call +971 55 835 0447.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              <motion.form 
+                className="contact-form" 
+                onSubmit={handleSubmit} 
+                noValidate 
+                aria-label="Project inquiry form"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, threshold: 0.5 }}
+                transition={{
+                  staggerChildren: 0.05,
+                  delayChildren: 0.2,
+                }}
+              >
+                <motion.div 
+                  className="form-row"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: durations.medium, ease: easings.fastOutSlowIn }}
+                >
+                  <div className="form-field">
+                    <label htmlFor="name" className="form-label">
+                      Full Name <span aria-hidden="true" className="form-required">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className={`form-input${errors.name ? ' form-input--error' : ''}`}
+                      placeholder="Your full name"
+                      autoComplete="name"
+                      aria-required="true"
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                    />
+                    {errors.name && (
+                      <motion.span 
+                        id="name-error" 
+                        className="form-error" 
+                        role="alert"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: durations.short }}
+                      >
+                        {errors.name}
+                      </motion.span>
+                    )}
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="email" className="form-label">
+                      Email Address <span aria-hidden="true" className="form-required">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className={`form-input${errors.email ? ' form-input--error' : ''}`}
+                      placeholder="you@company.com"
+                      autoComplete="email"
+                      aria-required="true"
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                    {errors.email && (
+                      <motion.span 
+                        id="email-error" 
+                        className="form-error" 
+                        role="alert"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: durations.short }}
+                      >
+                        {errors.email}
+                      </motion.span>
+                    )}
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="form-row"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: durations.medium, ease: easings.fastOutSlowIn, delay: 0.08 }}
+                >
+                  <div className="form-field">
+                    <label htmlFor="phone" className="form-label">Phone Number</label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="form-input"
+                      placeholder="+971 XX XXX XXXX"
+                      autoComplete="tel"
+                    />
+                  </div>
+
+                  <div className="form-field">
+                    <label htmlFor="project_type" className="form-label">Project Type</label>
+                    <select
+                      id="project_type"
+                      name="project_type"
+                      value={form.project_type}
+                      onChange={handleChange}
+                      className="form-input form-select"
+                    >
+                      {PROJECT_TYPES.map((opt) => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="form-field"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: durations.medium, ease: easings.fastOutSlowIn, delay: 0.16 }}
+                >
+                  <label htmlFor="message" className="form-label">
+                    Message <span aria-hidden="true" className="form-required">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    className={`form-input form-textarea${errors.message ? ' form-input--error' : ''}`}
+                    placeholder="Describe your project requirements, scope, location, and timeline..."
+                    rows={6}
+                    aria-required="true"
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                  />
+                  {errors.message && (
+                    <motion.span 
+                      id="message-error" 
+                      className="form-error" 
+                      role="alert"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: durations.short }}
+                    >
+                      {errors.message}
+                    </motion.span>
+                  )}
+                </motion.div>
+
+                <motion.div
+                  className="contact-form__submit-wrap"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: durations.medium, ease: easings.fastOutSlowIn, delay: 0.24 }}
+                >
+                  <motion.button
+                    type="submit"
+                    className="btn btn-primary contact-form__submit"
+                    disabled={status === 'loading'}
+                    aria-busy={status === 'loading'}
+                    whileHover={{ y: -2, boxShadow: '8px 8px 0px rgba(0, 0, 0, 1)' }}
+                    whileTap={{ y: 2, boxShadow: '2px 2px 0px rgba(0, 0, 0, 0.5)' }}
+                    transition={{ duration: durations.short }}
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <svg className="spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                          <circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0110 10" strokeLinecap="round"/>
+                        </svg>
+                        Sending…
+                      </>
+                    ) : 'Submit Inquiry'}
+                  </motion.button>
+                </motion.div>
+              </motion.form>
+            </motion.div>
+
             {/* Contact details */}
             <motion.div
-              className="contact__info reveal-right contact__info--centered"
+              className="contact__info reveal-right"
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, threshold: 0.5 }}
@@ -138,8 +388,8 @@ export default function Contact() {
                   {
                     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>,
                     label: 'Phone (WhatsApp enabled)',
-                    value: '+971 50 287 4520',
-                    href: 'tel:+971502874520',
+                    value: '+971 55 835 0447',
+                    href: 'tel:+971558350447',
                   },
                   {
                     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
@@ -191,7 +441,7 @@ export default function Contact() {
 
               {/* WhatsApp CTA */}
               <motion.a
-                href="https://wa.me/971502874520"
+                href="https://wa.me/971558350447"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-cta"
