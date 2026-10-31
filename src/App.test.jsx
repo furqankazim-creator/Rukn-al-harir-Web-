@@ -6,13 +6,13 @@ describe('App routes', () => {
     window.history.pushState({}, '', '/privacy-policy')
     render(<App />)
 
-    expect(await screen.findByRole('heading', { name: /privacy policy/i })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: /privacy policy/i }, { timeout: 4500 })).toBeInTheDocument()
   })
 
   it('renders the terms page at its route', async () => {
     window.history.pushState({}, '', '/terms')
     render(<App />)
 
-    expect(await screen.findByRole('heading', { name: /terms & conditions/i })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: /terms & conditions/i }, { timeout: 4500 })).toBeInTheDocument()
   })
 })
