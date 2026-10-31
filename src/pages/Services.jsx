@@ -75,7 +75,7 @@ const services = [
   {
     id: 'fire-safety',
     title: 'Fire Fighting & Life Safety Systems',
-    image: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800',
+    image: '/images/photos/services-fire.jpg',
     imageAlt: 'Industrial fire pump station and life safety pipework installation',
     icon: <FireIcon />,
     items: [
