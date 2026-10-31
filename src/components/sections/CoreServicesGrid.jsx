@@ -27,6 +27,13 @@ const services = [
     hash: '#support'
   },
   {
+    id: 'fire-safety',
+    icon: <FireIcon />,
+    title: 'Fire Fighting & Life Safety',
+    summary: 'Fire fighting safety equipment installation, fire detection & prevention systems, fire alarms, smoke detectors, and fire pump stations.',
+    hash: '#fire-safety'
+  },
+  {
     id: 'energy',
     icon: <EnergyIcon />,
     title: 'Alternative Energy Installation',
@@ -270,4 +277,8 @@ function EnergyIcon() {
       <path d="M20 24l3-6 3 4 3-4 3 6" strokeWidth="2.5"/>
     </svg>
   )
+}
+
+function FireIcon() {
+  return <svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M24 4C24 4 15 15 15 26c0 5 4 10 9 10 2 0 3-1 3-1s1 1 3 1c5 0 9-5 9-10 0-11-9-22-9-22z"/><path d="M24 18c0 4-3 7-3 10 0 2.5 1.5 4 3 4s3-1.5 3-4c0-3-3-6-3-10z"/></svg>
 }

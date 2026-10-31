@@ -116,6 +116,82 @@ export default function Approach() {
         </div>
       </section>
 
+      {/* Dedicated Life Safety & Fire Systems Execution Section */}
+      <section className="fire-execution-section section section--light">
+        <div className="container">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            <span className="section-label">Life Safety Execution</span>
+            <h2 className="section-title">How We Deliver Fire Protection &amp; Safety Works</h2>
+            <p className="section-subtitle">
+              From engineering submittals and UL/FM-listed equipment sourcing to hydrostatic pressure testing, detector integration, and Civil Defense authority approval.
+            </p>
+          </motion.div>
+
+          <div className="fire-execution-grid">
+            {[
+              {
+                step: '01',
+                title: 'Engineering Review & Civil Defense Alignment',
+                desc: 'Detailed review of architectural/MEP drawings, hydraulic calculations for pipe sizing, sprinkler density verification, and shop drawing preparation aligned with UAE Fire & Life Safety Code of Practice.',
+                tag: 'Design & Compliance'
+              },
+              {
+                step: '02',
+                title: 'UL/FM Certified Material Sourcing & MIR',
+                desc: 'Procurement of certified materials through approved channels: seamless ASTM A53 pipes, grooved fittings, UL/FM-listed fire pumps, optical detectors, and fire-resistant FP200 cabling with Material Inspection Requests (MIR).',
+                tag: 'Procurement & Inspection'
+              },
+              {
+                step: '03',
+                title: 'Fire Equipment & Pipework Installation',
+                desc: 'On-site execution of wet/dry sprinkler networks, 30m rubber hose reel cabinets, landing valves, external pillar hydrants, and passive fire-stopping penetrations across floors and shafts.',
+                tag: 'Site Execution'
+              },
+              {
+                step: '04',
+                title: 'Fire Pumps & Hydraulic Station Erection',
+                desc: 'Setting up electric, diesel, and jockey pump sets on anti-vibration inertia bases, aligning suction/discharge manifolds, testing pressure relief valves, and connecting dedicated water reserves.',
+                tag: 'Mechanical Delivery'
+              },
+              {
+                step: '05',
+                title: 'Fire Detection & Alarm System Integration',
+                desc: 'Installing addressable fire alarm panels (FACP), optical smoke detectors, heat sensors, duct detectors, break-glass call points, sounder-strobes, and cause-and-effect interlocks with AHUs and elevators.',
+                tag: 'Electrical & Controls'
+              },
+              {
+                step: '06',
+                title: 'Hydrostatic Testing, Witnessing & DCD Handover',
+                desc: 'Rigorous 200 PSI hydrostatic pressure testing of piping networks for 2+ hours, alarm simulation checks, integrated cause-and-effect witnessing, and final Civil Defense (DCD) inspection clearance.',
+                tag: 'Testing & Handover'
+              }
+            ].map((card, i) => (
+              <motion.div
+                key={card.step}
+                className="fire-execution-card"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
+              >
+                <div className="fire-execution-card__header">
+                  <span className="fire-execution-card__step">{card.step}</span>
+                  <span className="fire-execution-card__tag">{card.tag}</span>
+                </div>
+                <h3 className="fire-execution-card__title">{card.title}</h3>
+                <p className="fire-execution-card__desc">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Execution Timeline */}
       <ExecutionTimeline />
 

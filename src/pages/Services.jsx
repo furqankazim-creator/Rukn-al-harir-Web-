@@ -73,6 +73,21 @@ const services = [
     ],
   },
   {
+    id: 'fire-safety',
+    title: 'Fire Fighting & Life Safety Systems',
+    image: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800',
+    imageAlt: 'Industrial fire pump station and life safety pipework installation',
+    icon: <FireIcon />,
+    items: [
+      'Fire fighting safety equipment installation (sprinkler networks, hose reels, hydrants & certified extinguishers)',
+      'Fire detection systems & early hazard warning integration',
+      'Fire prevention systems & passive fire-stopping containment',
+      'Addressable & conventional fire alarm systems, smoke detectors & heat sensors',
+      'UL/FM-listed fire pumps (electric, diesel & jockey pump assemblies)',
+      'Civil Defense compliance, hydraulic pressure testing & commissioning support',
+    ],
+  },
+  {
     id: 'energy',
     title: 'Alternative Energy Installation',
     image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800',
@@ -354,4 +369,8 @@ function SupportIcon() {
 }
 function EnergyIcon() {
   return <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true"><circle cx="24" cy="24" r="10"/><line x1="24" y1="4" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="44"/><line x1="4" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="44" y2="24"/><path d="M20 24l3-6 3 4 3-4 3 6"/></svg>
+}
+
+function FireIcon() {
+  return <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M24 4C24 4 15 15 15 26c0 5 4 10 9 10 2 0 3-1 3-1s1 1 3 1c5 0 9-5 9-10 0-11-9-22-9-22z"/><path d="M24 18c0 4-3 7-3 10 0 2.5 1.5 4 3 4s3-1.5 3-4c0-3-3-6-3-10z"/></svg>
 }
