@@ -13,6 +13,7 @@ const PROJECT_TYPES = [
   { value: '', label: 'Select Project Type' },
   { value: 'mep', label: 'MEP Execution' },
   { value: 'civil', label: 'Civil Support' },
+  { value: 'fire_safety', label: 'Fire Fighting & Life Safety' },
   { value: 'project_support', label: 'Project Support' },
   { value: 'alternative_energy', label: 'Alternative Energy' },
   { value: 'other', label: 'Other' },

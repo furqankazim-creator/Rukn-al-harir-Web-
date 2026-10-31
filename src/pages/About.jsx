@@ -25,7 +25,7 @@ const galleryPhotos = [
 const teamTiles = [
   { icon: <EngineersIcon />, label: '4 Engineers', sub: 'Direct engineering oversight on every project' },
   { icon: <SupervisorsIcon />, label: '4 Supervisors', sub: 'Active supervision and coordination on site' },
-  { icon: <SkilledIcon />, label: 'Skilled Labor Force', sub: 'Trade-qualified technicians across MEP and civil works' },
+  { icon: <SkilledIcon />, label: 'Skilled Labor Force', sub: 'Trade-qualified technicians across MEP, fire protection, and civil works' },
   { icon: <GeneralIcon />, label: 'General Support Labor', sub: 'Flexible deployment to match evolving project needs' },
 ]
 
@@ -78,7 +78,7 @@ export default function About() {
                 We work as a dependable execution partner to main contractors, developers, consultants, facility operators, and project stakeholders who need responsive support, disciplined coordination, and reliable on-ground delivery. Our strength lies in helping clients move work forward efficiently by bridging the gap between design intent, site realities, manpower deployment, and execution requirements.
               </p>
               <p className="about-para">
-                With an agile team structure, practical site understanding, and a solution-oriented mindset, we support projects through electromechanical works, HVAC, plumbing and drainage, electrical works, civil support works, and related execution services. We also assist clients with procurement coordination, material sourcing support through approved channels, and site-level planning required to maintain progress and reduce delays.
+                With an agile team structure, practical site understanding, and a solution-oriented mindset, we support projects through electromechanical works, HVAC, plumbing and drainage, electrical works, fire fighting and life safety systems, civil support works, and related execution services. We also assist clients with procurement coordination, material sourcing support through approved channels, and site-level planning required to maintain progress and reduce delays.
               </p>
               <p className="about-para">
                 At our core, we take pride in making our clients' lives easier. We respond quickly, adapt to changing project conditions, and go beyond the immediate task to help keep projects on track.
@@ -120,7 +120,7 @@ export default function About() {
         images={galleryImages}
         label="Gallery"
         title="A Look at Our Project Execution"
-        subtitle="A selection of MEP, civil, and site works showing our on-ground execution capability."
+        subtitle="A selection of MEP, fire fighting, civil, and site works showing our on-ground execution capability."
         layout="grid"
         ctaTo={null}
       />
@@ -152,7 +152,7 @@ export default function About() {
               </div>
               <h3 className="vm-card__title">Mission</h3>
               <p className="vm-card__text">
-                To provide disciplined, solution-focused execution support across MEP, technical, and site works by combining engineering oversight, field coordination, manpower capability, and dependable delivery.
+                To provide disciplined, solution-focused execution support across MEP, fire protection & life safety, technical, and site works by combining engineering oversight, field coordination, manpower capability, and dependable delivery.
               </p>
             </div>
           </div>

@@ -72,15 +72,16 @@ export default function Footer() {
               <h3 className="footer__heading">Our Services</h3>
               <ul className="footer__links" role="list">
                 {[
-                  'MEP Execution Works',
-                  'Civil Support & Finishing',
-                  'Project Support Services',
-                  'Alternative Energy Installation',
+                  { name: 'MEP Execution Works', hash: '#mep' },
+                  { name: 'Civil Support & Finishing', hash: '#civil' },
+                  { name: 'Fire Fighting & Life Safety', hash: '#fire-safety' },
+                  { name: 'Project Support Services', hash: '#support' },
+                  { name: 'Alternative Energy Installation', hash: '#energy' },
                 ].map((s) => (
-                  <li key={s}>
-                    <Link to="/services" className="footer__link">
+                  <li key={s.name}>
+                    <Link to={`/services${s.hash}`} className="footer__link">
                       <span className="footer__link-arrow" aria-hidden="true">›</span>
-                      {s}
+                      {s.name}
                     </Link>
                   </li>
                 ))}
