@@ -16,7 +16,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-mid) 100%);
+  background: var(--navy-dark);
 }
 
 .hero__bg-video {
@@ -26,6 +26,19 @@
   object-position: center;
   display: block;
   will-change: transform;
+}
+
+/* Contrast Overlay: Deep tinted gradient to make white text crystal clear */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 10, 35, 0.82) 0%,
+    rgba(10, 10, 35, 0.65) 55%,
+    rgba(10, 10, 35, 0.40) 100%
+  );
+  pointer-events: none;
 }
 
 /* 3D accent layer — right half of the hero, behind the text */
@@ -70,6 +83,7 @@
   line-height: 1.05;
   letter-spacing: -0.01em;
   margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* Accent color in title */
@@ -81,11 +95,13 @@
 
 /* Subtitle - description */
 .hero__subtitle {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: #F1F5F9;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
   line-height: 1.8;
-  font-weight: 900;
+  font-weight: 600;
   margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  max-width: 640px;
 }
 
 /* Badge - rotated sticker style */
