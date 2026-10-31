@@ -21,9 +21,7 @@
 .marquee {
   overflow: hidden;
   width: 100%;
-  /* Extra vertical room so the hover lift/scale/shadow on a card never
-     gets clipped by this row's overflow:hidden (needed for the scroll fade) */
-  padding: 16px 0;
+  padding: 18px 0;
 }
 
 .marquee__track {
@@ -59,9 +57,9 @@
 /* Logo Container */
 .client-logo {
   flex: 0 0 auto;
-  width: 200px;
-  aspect-ratio: 3 / 2;
-  margin-right: 2rem; /* spacing lives on the card for a seamless loop */
+  width: 220px;
+  height: 100px;
+  margin-right: 2rem;
 }
 
 .client-logo__inner {
@@ -71,24 +69,24 @@
   align-items: center;
   justify-content: center;
   background: var(--white);
-  border: 3px solid var(--black);
-  box-shadow: var(--shadow-offset-md);
-  padding: 1.5rem;
-  border-radius: 2px;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease,
-              border-color 0.25s ease,
-              filter 0.25s ease,
-              opacity 0.25s ease;
-  filter: grayscale(100%);
-  opacity: 0.65;
+  border: 2px solid rgba(18, 18, 59, 0.12);
+  box-shadow: 0 4px 16px rgba(18, 18, 59, 0.06);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              filter 0.3s ease,
+              opacity 0.3s ease;
+  filter: grayscale(85%);
+  opacity: 0.85;
 }
 
 .client-logo:hover .client-logo__inner {
   filter: grayscale(0%);
   opacity: 1;
-  transform: translate(-4px, -4px) scale(1.04);
-  box-shadow: var(--shadow-offset-lg);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(18, 18, 59, 0.14), 0 0 0 1px var(--accent);
   border-color: var(--accent);
 }
 
