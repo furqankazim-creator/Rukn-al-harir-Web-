@@ -76,7 +76,7 @@ const services = [
     id: 'fire-safety',
     title: 'Fire Fighting & Life Safety Systems',
     image: '/images/photos/services-fire.jpg',
-    imageAlt: 'Industrial fire pump station and life safety pipework installation',
+    imageAlt: 'Certified fire fighting safety equipment, extinguishers, and life safety installation',
     icon: <FireIcon />,
     items: [
       'Fire fighting safety equipment installation (sprinkler networks, hose reels, hydrants & certified extinguishers)',
