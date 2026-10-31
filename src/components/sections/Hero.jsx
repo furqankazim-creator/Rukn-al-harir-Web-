@@ -74,7 +74,7 @@ export default function Hero({
 
   return (
     <section className="hero">
-      {/* Full-bleed background video with dark readability overlay */}
+      {/* Full-bleed background video */}
       <div className="hero__bg" aria-hidden="true">
         <video
           className="hero__bg-video"
@@ -85,7 +85,6 @@ export default function Hero({
           loop
           playsInline
         />
-        <div className="hero__overlay" />
       </div>
 
       <div className="container hero__content">
